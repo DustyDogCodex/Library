@@ -11,5 +11,10 @@ function Book(title,author,pages,read){
 }
 
 function addBookToLibrary(){
-    
+    myLibrary.push(Book)
 }
+
+const addBook = document.querySelector('.add-book')
+addBook.addEventListener('click', () => {
+    addBookToLibrary()
+})
