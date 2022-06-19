@@ -1,3 +1,45 @@
 *{
     font-family: "Joan", serif;
 }
+
+body{
+    height: 100vh;
+    background-image: url("https://w0.peakpx.com/wallpaper/34/714/HD-wallpaper-old-library-fantasy-tree-library-anime-nature-orginal-old.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: gold;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5% 10%;
+    background: rgb(0,0,0,0.4);
+}
+
+.content h1{
+    font-size: 48px;
+}
+
+.content p{
+    font-size: 24px;
+    text-align: center;
+}
+
+.addBookForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+    margin: 10%;
+    background: rgb(0,0,0,0.4);
+}
+
+.addBookForm label, input {
+    margin: 1%;
+}
+
+.addBookForm button{
+    margin-top: 2%;
+}
