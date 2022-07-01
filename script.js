@@ -5,9 +5,14 @@ const confirmBookAdd = document.querySelector('#confirmBookAdd')
 
 addBook.addEventListener('click', () => {
     //on clicking this, the addBookForm window should pop up
-    addBookModal.classList.add('.show')
+    addBookModal.classList.add('show')
 })
 
+confirmBookAdd.addEventListener('click', () => {
+    addBookToLibrary
+})
+
+//object constructor that will pass added books to the myLibrary array.
 function Book(title,author,pages,read){
     this.title = title
     this.author = author
