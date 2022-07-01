@@ -1,5 +1,5 @@
 *{
-    font-family: "Joan", serif;
+    font-family: 'Roboto Mono', monospace;
 }
 
 body{
@@ -16,6 +16,7 @@ body{
     align-items: center;
     padding: 5% 10%;
     background: rgb(0,0,0,0.4);
+    text-align: center;
 }
 
 .content h1{
@@ -24,11 +25,10 @@ body{
 
 .content p{
     font-size: 24px;
-    text-align: center;
 }
 
-.addBookForm {
-    display: flex;
+.addBookForm{
+    display: none;
     flex-direction: column;
     align-items: center;
     padding: 5%;
@@ -36,10 +36,113 @@ body{
     background: rgb(0,0,0,0.4);
 }
 
+.addBookForm.show{
+    display: flex;
+}
+
 .addBookForm label, input {
     margin: 1%;
 }
 
-.addBookForm button{
-    margin-top: 2%;
+.addBookButton{
+    margin-top: 1.5%;
+    padding: 20px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+.addBookButton:hover{
+    transform: scale(1.5);
+    transition: 0.4s;
+    background: rgb(0,188,227);
+    color: rgb(255,239,0);
+}
+
+/* CSS for div containing toggle switch */
+.toggleSwitch{
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* CSS for rounded toggle switch */
+ /* The switch - the box around the slider */
+ .readOrNot {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .readOrNot input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounding the slider */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  } 
+
+#confirmBookAdd{
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+#confirmBookAdd:hover{
+    transform: scale(1.2);
+    transition: 0.4s;
+    background: rgb(48,183,0);
+    color: rgb(255,239,0);
 }

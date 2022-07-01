@@ -1,4 +1,12 @@
 let myLibrary = [];
+const addBook = document.querySelector('.addBookButton')
+const addBookModal = document.querySelector('.addBookForm')
+const confirmBookAdd = document.querySelector('#confirmBookAdd')
+
+addBook.addEventListener('click', () => {
+    //on clicking this, the addBookForm window should pop up
+    addBookModal.classList.add('.show')
+})
 
 function Book(title,author,pages,read){
     this.title = title
@@ -14,7 +22,3 @@ function addBookToLibrary(){
     myLibrary.push(Book)
 }
 
-const addBook = document.querySelector('.add-book')
-addBook.addEventListener('click', () => {
-    addBookToLibrary()
-})
