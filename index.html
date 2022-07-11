@@ -15,6 +15,7 @@
     </head>
     <body>
 
+        <!-- intro to the webpage -->
         <div class="content">
             <h1>Varun's Free Online Public Library</h1>
             <p>This is a Library project created while following The Odin Project curriculum. Feel free to add your favorite books to this Library so that you can share your love of reading with people from around the world!</p>
@@ -22,6 +23,7 @@
             <button class="addBookButton">Add a Book!</button>
         </div>
 
+        <!-- add book form window -->
         <div class="addBookForm">
             <label for="bookName">Name of the Book:</label>
             <input id="bookName" type="text">
@@ -29,17 +31,20 @@
             <input id="authorName" type="text">
             <label for="pages">Number of Pages:</label>
             <input id="pages" type="number" max="10000">
-            <!-- Rounded switch -->
-            <div class="toggleSwitch">
+            <label for="readStatus">Read or Not?</label>
+            <input id="readStatus" type="checkbox">
+
+            <!-- Rounded  toggle switch. I'll come back to fix this later. Switch does not toggle when clicked -->
+            <!-- <div class="toggleSwitch">
                 <label>Read or Not?</label>
                 <div  class="readOrNot">
                     <input type="checkbox">
                     <span class="slider round"></span>
                 </div>
-            </div>
+            </div> -->
             
             <button type="submit" id="confirmBookAdd">Add book to Library</button>
-       
+               
         </div>
     </body>
     <script type="text/javascript" src="script.js"></script>
