@@ -6,7 +6,7 @@ const bookTitle = document.querySelector('#bookName')
 const author = document.querySelector('#authorName')
 const pages = document.querySelector('#pages')
 
-//variable for getting combining book info into an object and then pushing it into myLibrary array.
+//variable for combining book info into an object and then pushing it into myLibrary array.
 let newBook
 
 addBook.addEventListener('click', () => {
@@ -18,7 +18,7 @@ addBook.addEventListener('click', () => {
 confirmBookAdd.addEventListener('click', () => {
     addBookModal.classList.remove('show')
     newBook = new Book(bookTitle,author,pages,read)
-    addBookToLibrary()
+    addBookToLibrary
 })
 
 //object constructor that will pass added books to the myLibrary array.
@@ -32,8 +32,14 @@ function Book(bookTitle,author,pages,read){
     }
 }
 
+/* JS to dynamically add html elements to DOM after as new book has been added */
 function addBookToLibrary(){
     myLibrary.push(newBook)
     console.log(myLibrary)
+    const newCard = document.createElement('div')
+    const cardArea = document.querySelector('.cardArea')
+    newCard.innerText('this is some rando book info')
+    newCard.classList.add('newCard')
+    cardArea.innerHTML(newCard)    
 }
 
