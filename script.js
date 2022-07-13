@@ -2,9 +2,10 @@ let myLibrary = [];
 const addBook = document.querySelector('.addBookButton')
 const addBookModal = document.querySelector('.addBookForm')
 const confirmBookAdd = document.querySelector('#confirmBookAdd')
-/* const bookTitle = document.querySelector('#bookName')
-const author = document.querySelector('#authorName')
-const pages = document.querySelector('#pages') */
+const bookTitle = document.querySelector('#bookName').value
+const author = document.querySelector('#authorName').value
+const pages = document.querySelector('#pages').value
+const read = true //setting it to true atm. Will get its value when i figure out how.
 
 //variable for combining book info into an object and then pushing it into myLibrary array.
 /* let newBook */
@@ -68,4 +69,16 @@ class UI {
 
 //JS for displaying books on DOM
 document.addEventListener('DOMContentLoaded', UI.displayBooks)
+
+//JS for adding the book to the library by instantiating our book class
+document.querySelector('.addBookForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    //values from the form are stored in variables bookTitle, author and pages.
+    //need to add read or not as a value here too
+    const book = new Book(bookTitle,author,pages,read)
+
+    //Add book card to DOM
+    UI.addBookToLibrary(book)
+    console.log(book)
+})
 
