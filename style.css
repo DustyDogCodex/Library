@@ -162,11 +162,17 @@ input:checked + .slider:before {
 .cardArea{
     height: 80vh;
     width: 80vw;
+    padding: 10px;
     border: 1px solid;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .newCard{
-    height: 50px;
-    width: 50px;
-    border: 1px solid black;
+    height: 200px;
+    width: 200px;
+    font-size: 24px;
+    border: 2px solid black;
+    background: #06DCf1;
 }
