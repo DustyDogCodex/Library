@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary
 const addBook = document.querySelector('.addBookButton')
 const addBookModal = document.querySelector('.addBookForm')
 const confirmBookAdd = document.querySelector('#confirmBookAdd')
@@ -63,6 +63,25 @@ class UI {
         if(el.classList.contains('delete')){
             el.parentElement.parentElement.remove();
         }
+    }
+}
+
+class Storage {
+
+    static getBooks() {
+        if(localStorage.getItem('books') === null){
+            myLibrary = []
+        } else {
+            
+        }
+    }
+
+    static addBook(book){
+
+    }
+
+    static removeBook(isbn){
+
     }
 }
 
