@@ -3,20 +3,6 @@ const addBook = document.querySelector('.addBookButton')
 const addBookModal = document.querySelector('.addBookForm')
 const confirmBookAdd = document.querySelector('#confirmBookAdd')
 
-//variable for combining book info into an object and then pushing it into myLibrary array.
-/* let newBook */
-
-addBook.addEventListener('click', () => {
-    //on clicking this, the addBookForm window should pop up
-    addBookModal.classList.add('show')
-})
-
-//adds book to library once user confirms addition. Need to add variables that can access the data from addBookform and pass it here.
-confirmBookAdd.addEventListener('click', () => {
-    addBookModal.classList.remove('show')
-    /* newBook = new Book(bookTitle,author,pages,read) */
-})
-
 //class for passing added books to the myLibrary array.
 class Book {
     constructor(title, author, pages, read) {
@@ -99,9 +85,11 @@ document.querySelector('.addBookForm').addEventListener('submit', (e) => {
     //Validation of entered variables using JS
     //will change value of read later
     if(bookTitle === '' || author === '' || pages === '' || read === false){
-        alert('Please fill in all fields before submitting!')
+        alert('Please fill in all fields before submitting!').setTimeout(() => {
+           document.querySelector('.alert').remove()
+        }, 3000);
     } else {
-        //instantate book class
+        //instantiate book class
         const book = new Book(bookTitle,author,pages,read)
 
         //Add book card to DOM
