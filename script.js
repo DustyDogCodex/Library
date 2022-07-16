@@ -1,5 +1,3 @@
-const myLibrary
-const addBook = document.querySelector('.addBookButton')
 const addBookModal = document.querySelector('.addBookForm')
 const confirmBookAdd = document.querySelector('#confirmBookAdd')
 
@@ -36,9 +34,9 @@ class UI {
             }
         ]
 
-        const books = exampleBooks;
+        const myLibrary = exampleBooks;
 
-        books.forEach((value) => UI.addBookToLibrary(value))
+        myLibrary.forEach((value) => UI.addBookToLibrary(value))
     }
 
     //method for displaying books as cards on screen
@@ -69,19 +67,30 @@ class UI {
 class Storage {
 
     static getBooks() {
-        if(localStorage.getItem('books') === null){
+        if(localStorage.getItem('myLibrary') === null){
             myLibrary = []
         } else {
-            
+            myLibrary = JSON.parse(localStorage.getItem('myLibrary'))
         }
+
+        return myLibrary
     }
 
     static addBook(book){
-
+        const myLibrary = Store.getBooks()
+        myLibrary.push(book)
+        localStorage.setItem('myLibrary', JSON.stringify(myLibrary))
     }
 
+    //lol how do i remove a book from storage??????
     static removeBook(isbn){
+        const myLibrary = Store.getBooks()
 
+        myLibrary.forEach((book,index) => {
+
+        })
+
+        localStorage.setItem('myLibrary', JSON.stringify(myLibrary))
     }
 }
 
@@ -89,7 +98,7 @@ class Storage {
 document.addEventListener('DOMContentLoaded', UI.displayBooks)
 
 //JS for adding the book to the library by instantiating our book class
-document.querySelector('.addBookForm').addEventListener('submit', (e) => {
+document.querySelector('.addBookButton').addEventListener('submit', (e) => {
 
     //prevent default submit event from happening. right now the book card only flashes and then vanishes.
     e.preventDefault();
@@ -122,6 +131,13 @@ document.querySelector('.addBookForm').addEventListener('submit', (e) => {
 
 //JS for removing books
 document.querySelector('.cardArea').addEventListener('click', (e) => {
+    //this is for reoving book from UI
     UI.removeBook(e.target)
+
+    //this is for removing book from localstorage
+
+
+    //message for successfully removing a book
+    UI.showAlert('Book Removed!', 'success')
 })
 
