@@ -40,8 +40,15 @@ class Interface {
     static addBookToLibrary(book){
         const cardArea = document.querySelector('.cardArea')
         const newCard = document.createElement('div')
+        const deleteBook = document.createElement('button')
+        deleteBook.classList.add('delete')
         newCard.classList.add('newCard')
-        newCard.innerText = `${book.title} \n by ${book.author} \n It has ${book.pages} pages  \n Read: ${book.read}`
+        newCard.innerText = `${book.title} \n 
+                            by ${book.author} \n
+                            It has ${book.pages} pages
+                            \n Read: ${book.read}`
+        deleteBook.innerText = 'Remove Book'
+        newCard.appendChild(deleteBook)
         cardArea.appendChild(newCard)
     }    
 
@@ -61,7 +68,7 @@ class Interface {
     }
 }
 
-class StoredBooks {
+class Storage {
 
     static getBooks() {
         if(localStorage.getItem('myLibrary') === null){
