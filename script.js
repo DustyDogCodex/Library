@@ -63,7 +63,7 @@ class Interface {
     //method for removing books 
     static removeBook(el) {
         if(el.classList.contains('delete')){
-            el.parentElement.parentElement.remove();
+            el.parentElement.remove();
         }
     }
 }
