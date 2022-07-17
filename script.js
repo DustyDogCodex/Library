@@ -52,6 +52,16 @@ class Interface {
         cardArea.appendChild(newCard)
     }    
 
+    //method for showing an alert message using bootstrap if user doesn't enter all info and after removing/adding books.
+    static UserMakesBooBoo(message,className) {
+        const alertBox = document.createElement('div')
+        alertBox.className = `alert alert-${className}`
+        alertBox.appendChild(document.createTextNode(message))
+        const contentBox = document.querySelector('.content')
+        const addBookForm = document.querySelector('.addBookForm')
+        contentBox.insertBefore(alertBox, addBookForm)
+    }
+
     //method for clearing the fields after user submits information
     static resetFields() {
         document.querySelector('#bookName').value = ''
@@ -117,9 +127,7 @@ document.querySelector('.addBookForm').addEventListener('submit', (e) => {
     //Validation of entered variables using JS
     //will change value of read later
     if(bookTitle === '' || author === '' || pages === ''){
-        alert('Please fill in all fields before submitting!').setTimeout(() => {
-           document.querySelector('.alert').remove()
-        }, 3000);
+        Interface.UserMakesBooBoo('Please fill in all fields before submitting!', 'danger');
     } else {
         //instantiate book class
         const book = new Book(bookTitle,author,pages,read)
@@ -143,6 +151,6 @@ document.querySelector('.cardArea').addEventListener('click', (e) => {
 
 
     //message for successfully removing a book
-    Interface.showAlert('Book Removed!', 'success')
+    Interface.UserMakesBooBoo('Book Removed!', 'success')
 })
 
