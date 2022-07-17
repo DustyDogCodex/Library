@@ -28,7 +28,7 @@ class UI {
             },
             {
                 title: "Asterix and Obelisk",
-                author: "A.A. Milne",
+                author: "Rene Goscinny",
                 pages: 69,
                 read: 'yes' 
             }
@@ -44,7 +44,7 @@ class UI {
         const cardArea = document.querySelector('.cardArea')
         const newCard = document.createElement('div')
         newCard.classList.add('newCard')
-        newCard.innerText = `${book.title},${book.author},${book.pages},${book.read}`
+        newCard.innerText = `${book.title} \n by ${book.author} \n It has ${book.pages} pages  \n Read: ${book.read}`
         cardArea.appendChild(newCard)
     }    
 
