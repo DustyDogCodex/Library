@@ -1,6 +1,3 @@
-const addBookModal = document.querySelector('.addBookForm')
-const confirmBookAdd = document.querySelector('#confirmBookAdd')
-
 //class for passing added books to the myLibrary array.
 class Book {
     constructor(title, author, pages, read) {
@@ -15,7 +12,7 @@ class Book {
 }
 
 /* JS to dynamically add html elements to DOM after a new book has been added */
-class UI {
+class Interface {
     
     static displayBooks() {
         /* hard coded books here so i can see how they show up and that JS methods are working as intended */
@@ -36,7 +33,7 @@ class UI {
 
         const myLibrary = exampleBooks;
 
-        myLibrary.forEach((value) => UI.addBookToLibrary(value))
+        myLibrary.forEach((value) => Interface.addBookToLibrary(value))
     }
 
     //method for displaying books as cards on screen
@@ -64,7 +61,7 @@ class UI {
     }
 }
 
-class Storage {
+class StoredBooks {
 
     static getBooks() {
         if(localStorage.getItem('myLibrary') === null){
@@ -95,49 +92,50 @@ class Storage {
 }
 
 //JS for displaying books on DOM
-document.addEventListener('DOMContentLoaded', UI.displayBooks)
+document.addEventListener('DOMContentLoaded', Interface.displayBooks)
 
 //JS for adding the book to the library by instantiating our book class
-document.querySelector('.addBookButton').addEventListener('submit', (e) => {
+document.querySelector('.addBookForm').addEventListener('submit', (e) => {
 
     //prevent default submit event from happening. right now the book card only flashes and then vanishes.
     e.preventDefault();
 
     //values from the form are stored in variables bookTitle, author and pages.
-    //need to add read or not as a value here too
+    //check box is read using the checked method. Learned something new today.
     const bookTitle = document.querySelector('#bookName').value
     const author = document.querySelector('#authorName').value
     const pages = document.querySelector('#pages').value
-    const read = true //setting it to true atm. Will get its value when i figure out how.
+    const read = document.querySelector('#readStatus').checked 
     
     //Validation of entered variables using JS
     //will change value of read later
-    if(bookTitle === '' || author === '' || pages === '' || read === false){
+    if(bookTitle === '' || author === '' || pages === ''){
         alert('Please fill in all fields before submitting!').setTimeout(() => {
            document.querySelector('.alert').remove()
         }, 3000);
     } else {
         //instantiate book class
         const book = new Book(bookTitle,author,pages,read)
+        console.log(book)
 
         //Add book card to DOM
-        UI.addBookToLibrary(book)
+        Interface.addBookToLibrary(book)
         console.log(book)
 
         //reset all form fields
-        UI.clearFields();
+        Interface.clearFields();
     }
 })
 
 //JS for removing books
 document.querySelector('.cardArea').addEventListener('click', (e) => {
     //this is for reoving book from UI
-    UI.removeBook(e.target)
+    Interface.removeBook(e.target)
 
     //this is for removing book from localstorage
 
 
     //message for successfully removing a book
-    UI.showAlert('Book Removed!', 'success')
+    Interface.showAlert('Book Removed!', 'success')
 })
 
