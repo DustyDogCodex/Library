@@ -50,7 +50,7 @@ class Interface {
         document.querySelector('#bookName').value = ''
         document.querySelector('#authorName').value = ''
         document.querySelector('#pages').value = ''
-        //will insert value for read checkbox later
+        document.querySelector('#readStatus').checked = false
     }
 
     //method for removing books 
@@ -123,7 +123,7 @@ document.querySelector('.addBookForm').addEventListener('submit', (e) => {
         console.log(book)
 
         //reset all form fields
-        Interface.clearFields();
+        Interface.resetFields();
     }
 })
 
