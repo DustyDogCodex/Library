@@ -60,6 +60,8 @@ class Interface {
         const contentBox = document.querySelector('.content')
         const addBookForm = document.querySelector('.addBookForm')
         contentBox.insertBefore(alertBox, addBookForm)
+        //timeout values for removing alert box after display
+        setTimeout(() => document.querySelector('.alert').remove(), 3000)
     }
 
     //method for clearing the fields after user submits information
