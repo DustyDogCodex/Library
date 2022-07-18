@@ -37,6 +37,7 @@ class Interface {
     }
 
     //method for displaying books as cards on screen
+    //also adds a remove book buttoon to newly added cards.
     static addBookToLibrary(book){
         const cardArea = document.querySelector('.cardArea')
         const newCard = document.createElement('div')
@@ -138,6 +139,9 @@ document.querySelector('.addBookForm').addEventListener('submit', (e) => {
         //Add book card to DOM
         Interface.addBookToLibrary(book)
         console.log(book)
+
+        //success message for adding a book
+        Interface.UserMakesBooBoo('Book Added!', 'success')
 
         //reset all form fields
         Interface.resetFields();
