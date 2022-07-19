@@ -16,17 +16,21 @@ body{
     color: gold;
     display: flex;
     align-items: center;
-    padding: 1% 2%;
+    padding: 1%;
     background: rgb(0,0,0,0.4);
     text-align: center;
 }
 
 .content h1{
-    font-size: 48px;
+    font-size: 44px;
 }
 
 .content p{
-    font-size: 24px;
+    font-size: 22px;
+}
+
+.intro {
+    padding: 0% 4%;
 }
 
 .addBookForm{
@@ -34,7 +38,7 @@ body{
     flex-direction: column;
     align-items: center;
     padding: 5%;
-    margin: 10%;
+    margin: 1%;
     background: rgb(0,0,0,0.4);
 }
 
