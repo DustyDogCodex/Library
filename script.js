@@ -1,13 +1,12 @@
 //class for passing added books to the myLibrary array.
 class Book {
-    constructor(title, author, pages, read, isbn) {
+    constructor(title, author, pages, read) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
-        this.isbn = isbn;
         this.info = function () {
-            return `${title} by ${author}, ${pages} pages, read: ${read ? "yes" : "no"}, ISBN#: ${isbn}`;
+            return `${title} by ${author}, ${pages} pages, read: ${read ? "yes" : "no"}`;
         };
     }
 }
@@ -29,11 +28,10 @@ class Interface {
         const newCard = document.createElement('div')
         newCard.classList.add('newCard')
         newCard.innerHTML = `
-            ${book.title} \n 
+            <span>${book.title}</span>  
             by ${book.author}. \n
-            It has ${book.pages} pages. \n
+            It has ${book.pages} pages. \n  
             Read: ${book.read ? 'Yes' : 'No'} \n
-            <span>${book.isbn}</span>
             <button class='delete'>Remove Book</button></td>`        
         cardArea.appendChild(newCard)
     }    
@@ -56,7 +54,6 @@ class Interface {
         document.querySelector('#authorName').value = ''
         document.querySelector('#pages').value = ''
         document.querySelector('#readStatus').checked = false
-        document.querySelector('#isbn').value = ''
     }
 
     //method for removing books 
@@ -88,11 +85,11 @@ class Storage {
     }
 
     //lol how do i remove a book from storage??????
-    static removeBook(isbn){
+    static removeBook(title){
         const myLibrary = Storage.getBooks()
 
         myLibrary.forEach((book,index) => {
-            if(book.isbn === isbn){
+            if(book.title === title){
                myLibrary.splice(index,1);
             }
         })
@@ -116,15 +113,14 @@ document.querySelector('.addBookForm').addEventListener('submit', (e) => {
     const author = document.querySelector('#authorName').value
     const pages = document.querySelector('#pages').value
     const read = document.querySelector('#readStatus').checked 
-    const isbn = document.querySelector('#isbn').value
     
     //Validation of entered variables using JS
     //will change value of read later
-    if(bookTitle === '' || author === '' || pages === '' || isbn === ''){
+    if(bookTitle === '' || author === '' || pages === ''){
         Interface.UserMakesBooBoo('Please fill in all fields before submitting!', 'danger');
     } else {
         //instantiate book class
-        const book = new Book(bookTitle,author,pages,read,isbn)
+        const book = new Book(bookTitle,author,pages,read)
 
         //Add book card to DOM
         Interface.addBookToLibrary(book)
