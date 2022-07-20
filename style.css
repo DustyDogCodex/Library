@@ -171,9 +171,13 @@ input:checked + .slider:before {
     text-align: center;
 }
 
+.title{
+    height: 20px;
+}
+
 .newCard > button{
     background: red;
     margin-top: 3px;
-    border-radius: 20%;
+    border-radius: 40px;
     border: none;
 }

@@ -15,23 +15,8 @@ class Book {
 class Interface {
     
     static displayBooks() {
-        /* hard coded books here so i can see how they show up and that JS methods are working as intended */
-        const exampleBooks = [
-            {
-                title: "Winnie The Pooh",
-                author: "A.A. Milne",
-                pages: 420,
-                read: 'yes' 
-            },
-            {
-                title: "Asterix and Obelisk",
-                author: "Rene Goscinny",
-                pages: 69,
-                read: 'yes' 
-            }
-        ]
 
-        const myLibrary = exampleBooks;
+        const myLibrary = Storage.getBooks()
 
         myLibrary.forEach((value) => Interface.addBookToLibrary(value))
     }
@@ -41,15 +26,13 @@ class Interface {
     static addBookToLibrary(book){
         const cardArea = document.querySelector('.cardArea')
         const newCard = document.createElement('div')
-        const deleteBook = document.createElement('button')
-        deleteBook.classList.add('delete')
         newCard.classList.add('newCard')
-        newCard.innerText = `${book.title} \n 
-                            by ${book.author} \n
-                            It has ${book.pages} pages.
-                            \n Read: ${book.read ? 'Yes' : 'No'}`
-        deleteBook.innerText = 'Remove Book'
-        newCard.appendChild(deleteBook)
+        newCard.innerHTML = `
+            <td id='title'>${book.title}</td> 
+            <td>by ${book.author}.</td>
+            <td>It has ${book.pages} pages.</td>
+            <td>Read: ${book.read ? 'Yes' : 'No'} </td>
+            <td><button class='delete'>Remove Book</button></td>`        
         cardArea.appendChild(newCard)
     }    
 
@@ -96,14 +79,14 @@ class Storage {
     }
 
     static addBook(book){
-        const myLibrary = Store.getBooks()
+        const myLibrary = Storage.getBooks()
         myLibrary.push(book)
         localStorage.setItem('myLibrary', JSON.stringify(myLibrary))
     }
 
     //lol how do i remove a book from storage??????
     static removeBook(title){
-        const myLibrary = Store.getBooks()
+        const myLibrary = Storage.getBooks()
 
         myLibrary.forEach((book,index) => {
             if(book.title === title){
@@ -138,11 +121,12 @@ document.querySelector('.addBookForm').addEventListener('submit', (e) => {
     } else {
         //instantiate book class
         const book = new Book(bookTitle,author,pages,read)
-        console.log(book)
 
         //Add book card to DOM
         Interface.addBookToLibrary(book)
-        console.log(book)
+        
+        //add book to local storage using Storage class
+        Storage.addBook(book)
 
         //success message for adding a book
         Interface.UserMakesBooBoo('Book Added!', 'success')
@@ -158,7 +142,7 @@ document.querySelector('.cardArea').addEventListener('click', (e) => {
     Interface.removeBook(e.target)
 
     //this is for removing book from localstorage
-
+    Storage.removeBook(e.target.parentElement.parentElement.querySelector('#title').textContent)
 
     //message for successfully removing a book
     Interface.UserMakesBooBoo('Book Removed!', 'success')
