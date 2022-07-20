@@ -81,9 +81,11 @@ class Interface {
     }
 }
 
+// class for accessing and adding books to local storage
 class Storage {
 
     static getBooks() {
+        let myLibrary
         if(localStorage.getItem('myLibrary') === null){
             myLibrary = []
         } else {
@@ -100,11 +102,13 @@ class Storage {
     }
 
     //lol how do i remove a book from storage??????
-    static removeBook(isbn){
+    static removeBook(title){
         const myLibrary = Store.getBooks()
 
         myLibrary.forEach((book,index) => {
-
+            if(book.title === title){
+               myLibrary.splice(index,1);
+            }
         })
 
         localStorage.setItem('myLibrary', JSON.stringify(myLibrary))
