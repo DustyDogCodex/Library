@@ -47,7 +47,7 @@ class Interface {
         newCard.innerText = `${book.title} \n 
                             by ${book.author} \n
                             It has ${book.pages} pages.
-                            \n Read: ${book.read}`
+                            \n Read: ${book.read ? 'Yes' : 'No'}`
         deleteBook.innerText = 'Remove Book'
         newCard.appendChild(deleteBook)
         cardArea.appendChild(newCard)
