@@ -1,12 +1,13 @@
 //class for passing added books to the myLibrary array.
 class Book {
-    constructor(title, author, pages, read) {
+    constructor(title, author, pages, read, isbn) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
+        this.isbn = isbn;
         this.info = function () {
-            return `${title} by ${author}, ${pages} pages, ${read}`;
+            return `${title} by ${author}, ${pages} pages, read: ${read ? "yes" : "no"}, ISBN#: ${isbn}`;
         };
     }
 }
@@ -28,11 +29,12 @@ class Interface {
         const newCard = document.createElement('div')
         newCard.classList.add('newCard')
         newCard.innerHTML = `
-            <td id='title'>${book.title}</td> 
-            <td>by ${book.author}.</td>
-            <td>It has ${book.pages} pages.</td>
-            <td>Read: ${book.read ? 'Yes' : 'No'} </td>
-            <td><button class='delete'>Remove Book</button></td>`        
+            ${book.title} \n 
+            by ${book.author}. \n
+            It has ${book.pages} pages. \n
+            Read: ${book.read ? 'Yes' : 'No'} \n
+            <span>${book.isbn}</span>
+            <button class='delete'>Remove Book</button></td>`        
         cardArea.appendChild(newCard)
     }    
 
@@ -54,6 +56,7 @@ class Interface {
         document.querySelector('#authorName').value = ''
         document.querySelector('#pages').value = ''
         document.querySelector('#readStatus').checked = false
+        document.querySelector('#isbn').value = ''
     }
 
     //method for removing books 
@@ -85,11 +88,11 @@ class Storage {
     }
 
     //lol how do i remove a book from storage??????
-    static removeBook(title){
+    static removeBook(isbn){
         const myLibrary = Storage.getBooks()
 
         myLibrary.forEach((book,index) => {
-            if(book.title === title){
+            if(book.isbn === isbn){
                myLibrary.splice(index,1);
             }
         })
@@ -113,14 +116,15 @@ document.querySelector('.addBookForm').addEventListener('submit', (e) => {
     const author = document.querySelector('#authorName').value
     const pages = document.querySelector('#pages').value
     const read = document.querySelector('#readStatus').checked 
+    const isbn = document.querySelector('#isbn').value
     
     //Validation of entered variables using JS
     //will change value of read later
-    if(bookTitle === '' || author === '' || pages === ''){
+    if(bookTitle === '' || author === '' || pages === '' || isbn === ''){
         Interface.UserMakesBooBoo('Please fill in all fields before submitting!', 'danger');
     } else {
         //instantiate book class
-        const book = new Book(bookTitle,author,pages,read)
+        const book = new Book(bookTitle,author,pages,read,isbn)
 
         //Add book card to DOM
         Interface.addBookToLibrary(book)
@@ -142,7 +146,7 @@ document.querySelector('.cardArea').addEventListener('click', (e) => {
     Interface.removeBook(e.target)
 
     //this is for removing book from localstorage
-    Storage.removeBook(e.target.parentElement.parentElement.querySelector('#title').textContent)
+    Storage.removeBook(e.target.previousElementSibling.innerText)
 
     //message for successfully removing a book
     Interface.UserMakesBooBoo('Book Removed!', 'success')
