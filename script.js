@@ -29,10 +29,10 @@ class Interface {
         newCard.classList.add('newCard')
         newCard.innerHTML = `
             <span>${book.title}</span>  
-            by ${book.author}. \n
-            It has ${book.pages} pages. \n  
-            Read: ${book.read ? 'Yes' : 'No'} \n
-            <button class='delete'>Remove Book</button></td>`        
+            by ${book.author}. <br>
+            It has ${book.pages} pages. <br>  
+            Read: ${book.read ? 'Yes' : 'No'} <br>
+            <button class='delete'>Remove Book</button>`        
         cardArea.appendChild(newCard)
     }    
 
@@ -142,7 +142,7 @@ document.querySelector('.cardArea').addEventListener('click', (e) => {
     Interface.removeBook(e.target)
 
     //this is for removing book from localstorage
-    Storage.removeBook(e.target.previousElementSibling.innerText)
+    Storage.removeBook(e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerText)
 
     //message for successfully removing a book
     Interface.UserMakesBooBoo('Book Removed!', 'success')
