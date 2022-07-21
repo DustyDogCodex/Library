@@ -1,6 +1,6 @@
 # Library
 
-<a href='https://dustydogcodex.github.io/Library/'>LIVE DEMO</a>
+&#128218;<a href='https://dustydogcodex.github.io/Library/'>LIVE DEMO</a>&#128218; 
 
 For this project I will be creating a webpage that acts as a "library". Users can enter information regarding the books like name of book, author, number of pages in the book and whether or not they have read the book. This information is stored as an object inside an array using local storage. Throught this project I learned:
 
