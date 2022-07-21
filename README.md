@@ -1,5 +1,7 @@
 # Library
 
+<a href='https://dustydogcodex.github.io/Library/'>LIVE DEMO</a>
+
 For this project I will be creating a webpage that acts as a "library". Users can enter information regarding the books like name of book, author, number of pages in the book and whether or not they have read the book. This information is stored as an object inside an array using local storage. Throught this project I learned:
 
 1) How to get items from and store items into local storage using localStorage.getItem() and localStorage.setItem)().
